@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>정품 시리얼 확인</title>
+  <style>
+    body {
+      background-color: #111;
+      font-family: 'Pretendard', sans-serif;
+      color: #fff;
+      padding: 100px 20px;
+      margin: 0;
+    }
+    .container {
+      max-width: 720px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    h2 {
+      font-size: 30px;
+      margin-bottom: 20px;
+    }
+    p.description {
+      font-size: 17px;
+      line-height: 1.8;
+      margin-bottom: 36px;
+      color: #ccc;
+    }
+    input {
+      width: 100%;
+      padding: 20px;
+      border: 1px solid #ddd;
+      font-size: 18px;
+      color: #000;
+      background-color: #fff;
+    }
+    button {
+      margin-top: 28px;
+      width: 100%;
+      padding: 20px;
+      border: none;
+      background-color: #e72d67;
+      color: #000;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+    button:hover {
+      background-color: #000;
+      color: #fff;
+    }
+    #result {
+      margin-top: 36px;
+      font-size: 17px;
+      font-weight: 500;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Q. 정품 여부는 어떻게 확인할 수 있나요?</h2>
+    <p class="description">
+      제로에서는 위조품 확산을 방지하기 위해 시리얼 번호가 기재된 정품 인증 카드가 함께 제공됩니다.<br>
+      아래에 시리얼 번호를 검색해 보세요.
+    </p>
+    <input type="text" id="serialInput" placeholder="시리얼 번호를 입력하세요">
+    <button id="checkButton">조회하기</button>
+    <p id="result"></p>
+  </div>
+
+  <script>
+    const validSerials = ['ZERO001', 'ZERO002', 'NB2025-A001', 'NB2025-A002'];
+
+    document.getElementById('checkButton').addEventListener('click', () => {
+      const input = document.getElementById('serialInput').value.trim().toUpperCase();
+      const result = document.getElementById('result');
+
+      if (input === '') {
+        result.textContent = '시리얼 번호를 입력해주세요.';
+        result.style.color = '#888';
+      } else if (validSerials.includes(input)) {
+        result.textContent = '✔️ 정품이 확인되었습니다.';
+        result.style.color = '#2ecc71';
+      } else {
+        result.textContent = '❌ 등록되지 않은 시리얼 번호입니다.';
+        result.style.color = '#e74c3c';
+      }
+    });
+  </script>
+</body>
+</html>
